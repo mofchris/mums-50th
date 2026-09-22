@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy 50th Birthday, Mummy</title>
+<meta name="description" content="Fifty years, eighteen photographs, and twelve letters from the people who love her.">
+<meta name="theme-color" content="#0D0F14">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#letters">Skip to the letters</a>
+
+<main id="top">
+
+  <section class="hero" id="hero">
+    <div class="hero__shell">
+      <div class="monument">
+        <span class="monument__rule" aria-hidden="true"></span>
+        <span class="monument__digits" aria-hidden="true">50</span>
+      </div>
+      <div class="hero__copy">
+        <h1 class="hero__greeting" id="hero-greeting">Happy 50th Birthday, Mummy</h1>
+        <p class="hero__sub" id="hero-sub">Fifty years of you. Here is what everyone wanted to say.</p>
+      </div>
+    </div>
+    <p class="hero__cue"><span class="hero__cue-rule" aria-hidden="true"></span><span>Keep scrolling</span></p>
+  </section>
+
+  <div id="chapters"></div>
+
+  <section class="letters" id="letters" aria-labelledby="letters-title" tabindex="-1">
+    <div class="letters__band">
+      <div class="shell">
+        <header class="letters__head">
+          <span class="tick" aria-hidden="true"></span>
+          <h2 class="letters__title" id="letters-title">Twelve people wrote to you</h2>
+          <p class="letters__note">Your husband, your four children, the daughter you chose, and your friends. Every word is theirs.</p>
+        </header>
+      </div>
+    </div>
+    <div class="shell">
+      <div class="entries" id="entries"></div>
+    </div>
+  </section>
+
+  <section class="close" id="close" aria-labelledby="close-title">
+    <div class="close__shell">
+      <span class="close__digits" aria-hidden="true">50</span>
+      <h2 class="close__title" id="close-title">From all of us</h2>
+      <ul class="close__names" id="close-names"></ul>
+    </div>
+  </section>
+
+</main>
+
+<div class="reader" id="reader" hidden>
+  <div class="reader__scrim" data-reader-close></div>
+  <div class="reader__panel" role="dialog" aria-modal="true" aria-labelledby="reader-author" id="reader-panel">
+    <header class="reader__bar">
+      <p class="reader__who">
+        <span class="reader__author" id="reader-author"></span>
+        <span class="reader__rel" id="reader-rel"></span>
+      </p>
+      <button class="reader__close" type="button" data-reader-close>Close</button>
+    </header>
+    <div class="reader__scroll" id="reader-scroll" tabindex="-1">
+      <article class="reader__body" id="reader-body"></article>
+      <nav class="reader__nav" aria-label="Move between letters">
+        <button class="reader__step" type="button" id="reader-prev"></button>
+        <button class="reader__step reader__step--next" type="button" id="reader-next"></button>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<script src="../data/content.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
