@@ -179,7 +179,13 @@ window.BIRTHDAY = {
         "Happy Birthday, my love.",
         "Jah bless \u{1F64F}❤️"
       ],
-      signoff: "Chike ❤️"
+      signoff: "Chike ❤️",
+      /* A note laid on the table next to his letter. It is the family talking,
+         not him, so his own words stay exactly as he wrote them. */
+      aside: {
+        name: "Voltron",
+        text: "What Dad calls her, because she is always trying to defend us when he is scolding us."
+      }
     },
 
     {

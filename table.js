@@ -58,6 +58,11 @@
     oghenero: { stock: "laid",    fold: 1, wd: 64, mld: 32, dyd: -6,  rotd: 0.8,  wm: 96, mlm: 2, rotm: 0.7 }
   };
 
+  /* The little card sits in the gap to the right of the letter it belongs to,
+     dropped down the page so it reads as something set down afterwards. It
+     shares that row on desktop and tucks in underneath on a phone. */
+  var NICKNAME = { wd: 27, mld: 4, dyd: 132, rotd: 2.6, wm: 72, mlm: 15, dym: 6, rotm: 2.1 };
+
   /* Above this length a letter is folded: its pull quote stays out on the
      table and the whole text opens in a reading view. Below it, the letter is
      present in full, complete, nothing held back. */
@@ -284,6 +289,23 @@
         article.style.setProperty("--delay", (order % 2) * 90 + "ms");
       }
       pile.appendChild(article);
+
+      /* A small card laid on the table beside the letter. It carries something
+         the family wanted said that belongs in nobody's letter, so it is its
+         own piece of paper and the letter it sits next to stays untouched. */
+      if (tribute.aside) {
+        var note = el("aside", "nickname");
+        lay(note, NICKNAME);
+        var card = el("div", "nickname__card");
+        card.appendChild(el("p", "nickname__name", tribute.aside.name));
+        card.appendChild(el("p", "nickname__text", tribute.aside.text));
+        note.appendChild(card);
+        if (!reduceMotion) {
+          note.classList.add("reveal");
+          note.style.setProperty("--delay", "160ms");
+        }
+        pile.appendChild(note);
+      }
 
       var item = document.createElement("li");
       var link = el("a", "slip__link");
