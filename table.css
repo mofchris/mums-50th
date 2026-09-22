@@ -107,6 +107,19 @@ body {
 }
 
 img { display: block; max-width: 100%; }
+
+/* The two surfaces the browser draws for us. A default blue drag across her
+   husband's letter is the only thing on this page that belongs to no design. */
+::selection {
+  background: rgba(201, 162, 77, 0.32);
+  color: var(--ink);
+}
+.reader ::selection,
+.letter ::selection {
+  background: rgba(142, 107, 37, 0.24);
+  color: var(--ink);
+}
+:root { caret-color: var(--gold-deep); }
 h1, h2, h3, h4, p, ul, figure, blockquote { margin: 0; }
 ul { padding: 0; list-style: none; }
 
@@ -657,18 +670,21 @@ main { position: relative; z-index: 1; }
 
 /* ---------------------------------------------------- letter contents */
 
+/* margin stays at zero so ruled stock keeps its whole number of rules */
 .letter__relation {
+  margin-top: 0;
   font-family: var(--display);
-  font-size: 0.68rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+  font-style: italic;
+  font-size: 1rem;
+  letter-spacing: 0;
+  text-transform: none;
   color: #6B5326;
 }
 .stock-lined .letter__relation,
 .stock-airmail .letter__relation { color: #4E5C77; }
 
 .letter__author {
-  margin-top: 0.22em;
+  margin-top: 0;
   font-family: var(--display);
   font-weight: 400;
   font-size: clamp(1.6rem, 5.2vw, 2.1rem);
@@ -860,9 +876,8 @@ main { position: relative; z-index: 1; }
 }
 .reader__from {
   font-family: var(--display);
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  font-style: italic;
+  font-size: 0.98rem;
   color: #6B5326;
 }
 

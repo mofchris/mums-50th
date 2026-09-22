@@ -40,18 +40,22 @@
   /* A tall sheet swings a long way at the corners, so on a phone the letters
      that run full length lie almost flat and only the short notes tilt. */
   var LETTERS = {
-    chike:    { stock: "laid",    fold: 1, wd: 62, mld: 4,  dyd: 0,   rotd: -0.8, wm: 96, mlm: 2, rotm: -0.8 },
-    cc:       { stock: "lined",   fold: 0, wd: 56, mld: 26, dyd: -30, rotd: 1.1,  wm: 94, mlm: 4, rotm: 0.35 },
+    /* The wide letters each take a row to themselves, so their left margin is
+       what decides whether the table looks used or half empty. They alternate
+       near the left edge and near the right, which walks the eye down the
+       table instead of down a column. mld + wd stays under 100. */
+    chike:    { stock: "laid",    fold: 1, wd: 62, mld: 3,  dyd: 0,   rotd: -0.8, wm: 96, mlm: 2, rotm: -0.8 },
+    cc:       { stock: "lined",   fold: 0, wd: 56, mld: 38, dyd: -30, rotd: 1.1,  wm: 94, mlm: 4, rotm: 0.35 },
     uche:     { stock: "laid",    fold: 2, wd: 66, mld: 2,  dyd: -20, rotd: -1.0, wm: 98, mlm: 0, rotm: -0.6 },
-    somi:     { stock: "laid",    fold: 0, wd: 58, mld: 28, dyd: -24, rotd: 0.9,  wm: 94, mlm: 4, rotm: 0.8 },
-    ifeoma:   { stock: "lined",   fold: 0, wd: 52, mld: 6,  dyd: -16, rotd: -1.3, wm: 92, mlm: 4, rotm: -0.4 },
-    dammy:    { stock: "laid",    fold: 1, wd: 60, mld: 24, dyd: -28, rotd: 0.7,  wm: 96, mlm: 2, rotm: 0.7 },
+    somi:     { stock: "laid",    fold: 0, wd: 58, mld: 37, dyd: -24, rotd: 0.9,  wm: 94, mlm: 4, rotm: 0.8 },
+    ifeoma:   { stock: "lined",   fold: 0, wd: 52, mld: 5,  dyd: -16, rotd: -1.3, wm: 92, mlm: 4, rotm: -0.4 },
+    dammy:    { stock: "laid",    fold: 1, wd: 60, mld: 35, dyd: -28, rotd: 0.7,  wm: 96, mlm: 2, rotm: 0.7 },
     jinghreh: { stock: "airmail", fold: 1, wd: 63, mld: 3,  dyd: -20, rotd: -0.9, wm: 96, mlm: 2, rotm: -0.7 },
     excel:    { stock: "note",    fold: 0, wd: 40, mld: 8,  dyd: 0,   rotd: 1.4,  wm: 84, mlm: 8, rotm: 1.2 },
     paul:     { stock: "note",    fold: 0, wd: 40, mld: 6,  dyd: 46,  rotd: -1.6, wm: 84, mlm: 6, rotm: -1.2 },
     nene:     { stock: "lined",   fold: 0, wd: 41, mld: 12, dyd: -10, rotd: -1.2, wm: 86, mlm: 9, rotm: -0.6 },
     osato:    { stock: "lined",   fold: 0, wd: 41, mld: 4,  dyd: 40,  rotd: 1.5,  wm: 86, mlm: 5, rotm: 0.55 },
-    oghenero: { stock: "laid",    fold: 1, wd: 64, mld: 16, dyd: -6,  rotd: 0.8,  wm: 96, mlm: 2, rotm: 0.7 }
+    oghenero: { stock: "laid",    fold: 1, wd: 64, mld: 32, dyd: -6,  rotd: 0.8,  wm: 96, mlm: 2, rotm: 0.7 }
   };
 
   /* Above this length a letter is folded: its pull quote stays out on the
@@ -131,7 +135,7 @@
     var fig = el("figure", "print" + (isScan ? " print--scan" : ""));
 
     var img = document.createElement("img");
-    img.src = "../" + photo.src;
+    img.src = photo.src;
     img.alt = photo.alt;
     img.width = photo.w;
     img.height = photo.h;
@@ -235,10 +239,13 @@
       var sheet = el("div", "sheet");
       var paper = el("div", "sheet__paper");
 
-      if (tribute.relation) { paper.appendChild(el("p", "letter__relation", tribute.relation)); }
+      /* Who wrote it reads under the name, in the letter's own italic, rather
+         than as letterspaced capitals above it. It is the line that tells her
+         who is speaking, so it should not be the smallest type on the page. */
       var author = el("h3", "letter__author", tribute.author);
       author.id = "author-" + tribute.id;
       paper.appendChild(author);
+      if (tribute.relation) { paper.appendChild(el("p", "letter__relation", tribute.relation)); }
       if (tribute.heading) { paper.appendChild(el("p", "letter__heading", tribute.heading)); }
       paper.appendChild(el("div", "letter__hair"));
 

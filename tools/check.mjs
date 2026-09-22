@@ -61,12 +61,15 @@ if (offenders.length) fail(`em dash or en dash found at:\n      ${offenders.join
 else ok("no em dashes or en dashes anywhere in the project");
 
 // ---- built pages ----
-const pages = ["one/index.html", "two/index.html", "three/index.html"];
+// index.html at the root is the page she actually opens. two/ and three/ are
+// the designs that were not chosen, kept so the link still works.
+const pages = ["index.html", "two/index.html", "three/index.html"];
 for (const page of pages) {
   const path = join(root, page);
   if (!existsSync(path)) { console.log(`  --  ${page} not built yet`); continue; }
   const html = readFileSync(path, "utf8");
-  for (const token of ['lang="en"', 'name="viewport"', "../data/content.js"]) {
+  const dataRef = page.includes("/") ? "../data/content.js" : "data/content.js";
+  for (const token of ['lang="en"', 'name="viewport"', dataRef]) {
     if (!html.includes(token)) fail(`${page} missing ${token}`);
   }
   if (/src="\//.test(html) || /href="\/[^\/]/.test(html)) fail(`${page} uses a site-root path, which breaks GitHub Pages project URLs`);

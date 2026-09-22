@@ -2,141 +2,60 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy 50th Birthday, Mummy</title>
+<meta name="description" content="Eighteen photographs and twelve letters, laid out on a table for her fiftieth birthday.">
+<meta name="theme-color" content="#2B180D">
+<meta name="color-scheme" content="dark light">
 <meta name="robots" content="noindex, nofollow">
-<title>Three ways to say it</title>
-<meta name="description" content="Three designs for her fiftieth birthday. Pick one.">
-<style>
-  :root {
-    --ink: #1C1815;
-    --paper: #F6F1E8;
-    --muted: #6B6158;
-    --line: rgba(28, 24, 21, 0.14);
-    --gold: #8A6520;
-  }
-  * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0;
-    padding: clamp(28px, 7vw, 76px) clamp(16px, 5vw, 48px) clamp(48px, 10vw, 96px);
-    background: var(--paper);
-    color: var(--ink);
-    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-    line-height: 1.55;
-  }
-  .wrap { max-width: 1120px; margin: 0 auto; }
-  .kicker {
-    margin: 0 0 10px;
-    font-size: 0.78rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-  h1 {
-    margin: 0 0 12px;
-    font-size: clamp(2rem, 6.4vw, 3.3rem);
-    line-height: 1.05;
-    font-weight: 400;
-  }
-  .lede {
-    margin: 0 0 clamp(30px, 6vw, 54px);
-    max-width: 56ch;
-    color: var(--muted);
-    font-size: clamp(1rem, 2.4vw, 1.12rem);
-  }
-  .grid {
-    display: grid;
-    gap: clamp(26px, 5vw, 40px);
-    grid-template-columns: 1fr;
-  }
-  @media (min-width: 760px) { .grid { grid-template-columns: repeat(3, 1fr); } }
-
-  .card { display: flex; flex-direction: column; }
-  .card a.shot {
-    display: block;
-    border: 1px solid var(--line);
-    background: #fff;
-    line-height: 0;
-    transition: box-shadow 0.18s ease, transform 0.18s ease;
-  }
-  .card a.shot:hover { box-shadow: 0 10px 30px rgba(28, 24, 21, 0.18); transform: translateY(-2px); }
-  .card img { width: 100%; height: auto; display: block; }
-  .card h2 {
-    margin: 16px 0 4px;
-    font-size: 1.32rem;
-    font-weight: 400;
-  }
-  .card h2 a { color: var(--ink); text-decoration-color: var(--gold); text-underline-offset: 0.16em; }
-  .card .num {
-    font-size: 0.74rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-  .card p { margin: 0 0 14px; color: var(--muted); font-size: 0.97rem; }
-  .card .open {
-    margin-top: auto;
-    align-self: start;
-    display: inline-block;
-    padding: 9px 16px;
-    min-height: 44px;
-    line-height: 26px;
-    border: 1px solid var(--ink);
-    color: var(--ink);
-    text-decoration: none;
-    font-size: 0.92rem;
-  }
-  .card .open:hover { background: var(--ink); color: var(--paper); }
-  a:focus-visible, .shot:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
-  footer {
-    margin-top: clamp(40px, 8vw, 72px);
-    padding-top: 20px;
-    border-top: 1px solid var(--line);
-    color: var(--muted);
-    font-size: 0.9rem;
-    max-width: 62ch;
-  }
-</style>
+<link rel="stylesheet" href="table.css">
 </head>
 <body>
-<div class="wrap">
-  <p class="kicker">Her fiftieth</p>
-  <h1>Three ways to say it</h1>
-  <p class="lede">
-    Same eighteen photographs, same twelve letters, three different worlds.
-    Open each one, then pick the one she should wake up to.
-  </p>
 
-  <div class="grid">
-    <div class="card">
-      <a class="shot" href="one/" aria-label="Open design one, The table"><img src="assets/previews/one.jpg" alt="Design one: photographic prints laid out on a dark walnut table." width="760" height="897" loading="lazy" decoding="async"></a>
-      <span class="num">One</span>
-      <h2><a href="one/">The table</a></h2>
-      <p>Her life spread out as real prints on warm walnut, tilted and overlapping. The letters are paper you can almost feel: laid stock, ruled notebook, a folded crease.</p>
-      <a class="open" href="one/">Open this one</a>
+<a class="skip" href="#letters">Skip to the letters</a>
+
+<div class="table">
+  <main id="top">
+
+    <header class="hero" id="hero"></header>
+
+    <section class="album" id="album" aria-labelledby="album-title">
+      <h2 class="section-title" id="album-title">Eighteen photographs</h2>
+      <div class="album__chapters" id="chapters"></div>
+    </section>
+
+    <section class="letters" id="letters" aria-labelledby="letters-title">
+      <h2 class="section-title" id="letters-title">Twelve letters</h2>
+      <nav class="slip" id="slip" aria-labelledby="slip-title">
+        <h3 class="slip__title" id="slip-title">Everyone who wrote</h3>
+        <ul class="slip__list" id="slip-list"></ul>
+      </nav>
+      <div class="letters__pile" id="pile"></div>
+    </section>
+
+    <footer class="close" id="close"></footer>
+
+  </main>
+</div>
+
+<noscript>
+  <p class="noscript">This page needs JavaScript switched on to lay out the photographs and the letters.</p>
+</noscript>
+
+<dialog class="reader" id="reader" aria-labelledby="reader-author">
+  <div class="reader__paper">
+    <div class="reader__bar">
+      <p class="reader__from" id="reader-relation"></p>
+      <button type="button" class="reader__close" id="reader-close-top">Close</button>
     </div>
-
-    <div class="card">
-      <a class="shot" href="two/" aria-label="Open design two, The monument"><img src="assets/previews/two.jpg" alt="Design two: a very large numeral fifty set against a dark editorial page." width="760" height="897" loading="lazy" decoding="async"></a>
-      <span class="num">Two</span>
-      <h2><a href="two/">The monument</a></h2>
-      <p>The way a magazine would treat a feature about someone who matters. An enormous 50, a strong asymmetric grid, and a lot of quiet around every photograph.</p>
-      <a class="open" href="two/">Open this one</a>
-    </div>
-
-    <div class="card">
-      <a class="shot" href="three/" aria-label="Open design three, Celebration cloth"><img src="assets/previews/three.jpg" alt="Design three: blocks of gele green, gold and ultramarine holding the photographs." width="760" height="897" loading="lazy" decoding="async"></a>
-      <span class="num">Three</span>
-      <h2><a href="three/">Celebration cloth</a></h2>
-      <p>Built from the colours she actually wears in these photographs. Gele green, coral, ultramarine and gold, blocked like aso ebi for a family celebration.</p>
-      <a class="open" href="three/">Open this one</a>
+    <article class="reader__body" id="reader-body" tabindex="-1"></article>
+    <div class="reader__foot">
+      <button type="button" class="reader__close reader__close--foot" id="reader-close-bottom">Close this letter</button>
     </div>
   </div>
+</dialog>
 
-  <footer>
-    This page is only for choosing. Once you pick one, it becomes the page at the
-    main link, and this chooser goes away.
-  </footer>
-</div>
+<script src="data/content.js"></script>
+<script src="table.js"></script>
 </body>
 </html>
