@@ -11,29 +11,90 @@
     reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   } catch (e) { reduceMotion = false; }
 
-  /* How each print lies on the table. Hand set, never generated: the angles
-     and offsets are irregular on purpose and never mirror each other.
-     wd/mld/dyd/rotd are the desktop values, wm/mlm/dym/rotm the phone ones. */
-  var PRINTS = [
-    { wd: 52, mld: 0,    dyd: 8,    rotd: -1.5, wm: 100, mlm: 0,  dym: 0,    rotm: -1.3, z: 2 },
-    { wd: 44, mld: -1.5, dyd: 108,  rotd: 2.1,  wm: 86,  mlm: 12, dym: -14,  rotm: 1.9,  z: 3 },
-    { wd: 57, mld: 0,    dyd: 0,    rotd: -1.0, wm: 100, mlm: 0,  dym: 0,    rotm: 1.0,  z: 1 },
-    { wd: 37, mld: 1,    dyd: 132,  rotd: 2.3,  wm: 78,  mlm: 0,  dym: -10,  rotm: -2.0, z: 3 },
-    { wd: 45, mld: 9,    dyd: -66,  rotd: -2.2, wm: 80,  mlm: 18, dym: -22,  rotm: 1.6,  z: 2 },
-    { wd: 20, mld: 2,    dyd: 44,   rotd: 1.8,  wm: 40,  mlm: 0,  dym: 0,    rotm: 1.8,  z: 2 },
-    { wd: 30, mld: 3,    dyd: 0,    rotd: -1.4, wm: 52,  mlm: 4,  dym: 40,   rotm: -1.5, z: 3 },
-    { wd: 23, mld: 3,    dyd: 134,  rotd: 2.4,  wm: 46,  mlm: 0,  dym: -20,  rotm: 2.2,  z: 1 },
-    { wd: 34, mld: 30,   dyd: -104, rotd: -2.0, wm: 46,  mlm: 6,  dym: 64,   rotm: -1.9, z: 4 },
-    { wd: 28, mld: 0,    dyd: 0,    rotd: -1.7, wm: 88,  mlm: 0,  dym: 0,    rotm: -1.5, z: 2 },
-    { wd: 34, mld: 3,    dyd: 86,   rotd: 1.2,  wm: 44,  mlm: 6,  dym: -6,   rotm: 1.8,  z: 3 },
-    { wd: 26, mld: 4,    dyd: 14,   rotd: -2.3, wm: 42,  mlm: 4,  dym: 52,   rotm: -2.2, z: 1 },
-    { wd: 31, mld: 18,   dyd: -96,  rotd: 2.0,  wm: 82,  mlm: 14, dym: -18,  rotm: 1.3,  z: 4 },
-    { wd: 27, mld: 0,    dyd: 30,   rotd: 1.5,  wm: 52,  mlm: 0,  dym: 0,    rotm: 1.6,  z: 2 },
-    { wd: 25, mld: 3,    dyd: 0,    rotd: -1.9, wm: 40,  mlm: 6,  dym: 58,   rotm: -1.8, z: 3 },
-    { wd: 33, mld: 3,    dyd: 96,   rotd: 1.0,  wm: 92,  mlm: 4,  dym: -10,  rotm: -1.1, z: 4 },
-    { wd: 29, mld: 6,    dyd: -70,  rotd: -2.1, wm: 44,  mlm: 0,  dym: 0,    rotm: 2.0,  z: 2 },
-    { wd: 32, mld: 4,    dyd: 40,   rotd: 1.7,  wm: 48,  mlm: 6,  dym: 44,   rotm: -1.5, z: 3 }
-  ];
+  /* How the prints lie on the table.
+
+     With sixty odd photographs this cannot be a hand written list any more,
+     so it is generated: but from a fixed seed, so the scatter is the same
+     every time she opens the page and nothing jumps between visits.
+
+     The rules that matter are the ones a person would apply laying real
+     prints out. A wide scan takes more of the table than an upright one. A
+     very tall print takes least. Nothing is ever mirrored, no two neighbours
+     lean the same way, and every row is left a little short of the full width
+     so the arrangement looks set down rather than ruled. */
+  function seeded(seed) {
+    return function () {
+      seed = (seed + 0x6D2B79F5) | 0;
+      var t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  function buildPrintLayout() {
+    var rand = seeded(20260922);
+    var pick = function (lo, hi) { return lo + rand() * (hi - lo); };
+    var specs = {};
+
+    data.chapters.forEach(function (chapter) {
+      var ids = [];
+      data.photos.forEach(function (p, i) { if (p.chapter === chapter.id) { ids.push(i); } });
+
+      var at = 0, rowNo = 0, lean = rand() < 0.5 ? 1 : -1;
+      while (at < ids.length) {
+        var row = [], filled = 0;
+        while (at < ids.length && row.length < 3) {
+          var photo = data.photos[ids[at]];
+          var ar = photo.w / photo.h;
+          var w = ar >= 1.15 ? pick(40, 54) : ar <= 0.62 ? pick(18, 26) : pick(25, 35);
+          var gap = row.length ? pick(2, 6) : pick(0, 7);
+          if (row.length && filled + gap + w > 97) { break; }
+          row.push({ id: ids[at], w: w, gap: gap, ar: ar });
+          filled += gap + w;
+          at++;
+        }
+
+        /* A print left on its own at the end of a chapter should read as a
+           deliberate single, not as a scrap. Widen a short row until it
+           carries the table, capped by shape so a very tall print is never
+           blown up into a poster. */
+        var gaps = 0, wsum = 0, i;
+        for (i = 0; i < row.length; i++) { gaps += row[i].gap; wsum += row[i].w; }
+        var ceiling = 0;
+        for (i = 0; i < row.length; i++) {
+          ceiling += row[i].ar >= 1.15 ? 62 : row[i].ar <= 0.62 ? 30 : 42;
+        }
+        var want = Math.min(ceiling, (row.length === 1 ? pick(52, 70) : pick(88, 96)) - gaps);
+        if (wsum < want) {
+          var f = want / wsum;
+          for (i = 0; i < row.length; i++) { row[i].w *= f; }
+          filled = gaps + want;
+        }
+
+        /* Rows alternate which edge they hug, so the eye walks down the table
+           instead of down a column. */
+        var slack = Math.max(0, 97 - filled);
+        if (rowNo % 2 === 1) { row[0].gap += slack * pick(0.45, 0.9); }
+
+        row.forEach(function (item, n) {
+          lean = -lean;
+          var wide = row.length === 1;
+          specs[item.id] = {
+            wd: +item.w.toFixed(1),
+            mld: +item.gap.toFixed(1),
+            dyd: Math.round(rowNo === 0 && n === 0 ? pick(0, 18) : pick(-92, 128)),
+            rotd: +(lean * pick(0.7, 2.4)).toFixed(2),
+            wm: +(wide ? pick(84, 99) : row.length === 2 ? pick(44, 56) : pick(38, 48)).toFixed(1),
+            mlm: +(n === 0 ? pick(0, 9) : pick(2, 7)).toFixed(1),
+            dym: Math.round(n === 0 && rowNo === 0 ? 0 : pick(-24, 62)),
+            rotm: +(-lean * pick(0.6, 2.2)).toFixed(2)
+          };
+        });
+        rowNo++;
+      }
+    });
+    return specs;
+  }
 
   /* How each letter lies, and what paper it is written on. Excel and Paul sit
      side by side, so do Nene and Osato: four short notes, two real pairs. */
@@ -160,6 +221,7 @@
   function buildAlbum() {
     var host = document.getElementById("chapters");
     var scanned = 0;
+    var PRINTS = buildPrintLayout();
 
     data.chapters.forEach(function (chapter) {
       var section = el("section", "chapter");
@@ -185,12 +247,13 @@
 
         var plate = el("div", "plate");
         lay(plate, PRINTS[index] || FALLBACK);
+
         /* A caption is her children's words about the photograph. Prints may
            overlap at the corners, which is the whole point of a table, but an
            overlap that swallows a caption is lost content. Overlap comes from
            a later plate pulling upward, so captioned prints ride above every
            plate that follows them. */
-        if (photo.caption) { plate.style.setProperty("--z", String(40 - index)); }
+        if (photo.caption) { plate.style.setProperty("--z", String(400 - index)); }
         plate.appendChild(buildPrint(photo, isScan, index < 2));
         if (!reduceMotion) {
           plate.classList.add("reveal");

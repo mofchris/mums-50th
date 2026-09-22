@@ -22,8 +22,27 @@ const actual = data.tributes.map((t) => t.id);
 if (actual.join(",") !== expectedTributes.join(",")) fail(`tribute order is ${actual.join(",")}`);
 else ok(`12 tributes in order: ${actual.join(", ")}`);
 
-if (data.photos.length !== 18) fail(`expected 18 photos, got ${data.photos.length}`);
-else ok("18 photos");
+// The count grows as the family finds more photographs, so rather than pin a
+// number, assert the manifest and the folder agree in both directions.
+const onDisk = readdirSync(join(root, "assets/photos")).filter((f) => /\.jpe?g$/i.test(f)).sort();
+const referenced = data.photos.map((p) => p.src.split("/").pop()).sort();
+const orphans = onDisk.filter((f) => !referenced.includes(f));
+if (orphans.length) fail(`image files nothing points at: ${orphans.join(", ")}`);
+if (new Set(referenced).size !== referenced.length) fail("the same photo is listed twice");
+if (data.photos.length < 18) fail(`only ${data.photos.length} photos`);
+if (!orphans.length && new Set(referenced).size === referenced.length) {
+  ok(`${data.photos.length} photos, every file used exactly once`);
+}
+
+const chapterIds = new Set(data.chapters.map((c) => c.id));
+for (const p of data.photos) {
+  if (!chapterIds.has(p.chapter)) fail(`${p.src} is in chapter "${p.chapter}", which does not exist`);
+}
+for (const c of data.chapters) {
+  const n = data.photos.filter((p) => p.chapter === c.id).length;
+  if (!n) fail(`chapter "${c.id}" has no photographs`);
+}
+ok(`${data.chapters.length} chapters, each with photographs`);
 
 for (const p of data.photos) {
   if (!existsSync(join(root, p.src))) fail(`missing photo file ${p.src}`);

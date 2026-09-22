@@ -12,28 +12,35 @@ window.BIRTHDAY = {
     fromAll: "From all of us"
   },
 
-  /* Chronological. Every photo carries its true pixel size so layouts can
-     reserve the exact space and never crop a face. */
+  /* Chronological. Every photo carries its true pixel size so the layout can
+     reserve the exact space and never crop a face. The order and the chapter
+     each photograph sits in are read from the film stock, the clothes and her
+     apparent age, since none of the files carry a date. */
   chapters: [
     {
       id: "before",
       title: "Before we called her Mummy",
-      note: "A young woman, a young love, and a life not yet built."
+      note: "A young woman with her whole life still ahead of her."
+    },
+    {
+      id: "chose",
+      title: "The one she chose",
+      note: "Thirty-two years of friendship, and everything that came after it."
     },
     {
       id: "building",
       title: "Building it, brick by brick",
-      note: "The work, the shop, the first small hands to hold."
-    },
-    {
-      id: "between",
-      title: "The years in between",
-      note: "Gele after gele. Celebration after celebration."
+      note: "The work, the shop, and the first small hands to hold."
     },
     {
       id: "people",
       title: "Her people",
       note: "School runs, graduations, and everyone she carried along."
+    },
+    {
+      id: "between",
+      title: "The years in between",
+      note: "Gele after gele. Celebration after celebration."
     },
     {
       id: "now",
@@ -44,112 +51,376 @@ window.BIRTHDAY = {
 
   photos: [
     {
-      src: "assets/photos/01-young-love-outdoors.jpg",
-      w: 1800, h: 1244, chapter: "before",
-      alt: "A young Nwando in a patterned wrapper and white hat standing beside Chike outside a house, palm trees behind them.",
+      src: "assets/photos/01-studio-in-grey.jpg",
+      w: 1067, h: 1300, chapter: "before",
+      alt: "A soft focus studio portrait of her as a young woman in a grey blazer, hair cut short.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/02-long-hair-studio.jpg",
+      w: 973, h: 1300, chapter: "before",
+      alt: "A studio portrait of her with long straight hair, in a pale checked shirt against a dark ground.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/03-denim-on-a-stool.jpg",
+      w: 843, h: 1300, chapter: "before",
+      alt: "She sits on a stool in a denim jacket and dark leggings against a plain studio wall.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/04-navy-blazer.jpg",
+      w: 918, h: 1300, chapter: "before",
+      alt: "She sits on a stool in a navy blazer with a wide white collar, greenery painted behind her.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/05-afro-and-blazer.jpg",
+      w: 875, h: 1300, chapter: "before",
+      alt: "A studio portrait of her with an afro, in a black blazer, one hand resting on a turned column.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/06-the-long-coat.jpg",
+      w: 1016, h: 1300, chapter: "before",
+      alt: "She stands in a long pale grey coat dress against a dark studio ground.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/07-white-top-and-jeans.jpg",
+      w: 1031, h: 1300, chapter: "before",
+      alt: "She sits outdoors at night in a white off shoulder top and jeans, a bare tree behind her.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/08-the-bob.jpg",
+      w: 852, h: 1300, chapter: "before",
+      alt: "A close portrait of her with a bob, in a black top, the background softened.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/09-red-wrapper-studio.jpg",
+      w: 903, h: 1300, chapter: "before",
+      alt: "A studio portrait of her seated in a red patterned wrapper and matching head tie.",
+      caption: "Before any of us existed."
+    },
+    {
+      src: "assets/photos/10-on-the-street.jpg",
+      w: 891, h: 1300, chapter: "before",
+      alt: "She stands on a street in a long pale lace dress and a silver head tie.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/11-green-ankara-road.jpg",
+      w: 924, h: 1300, chapter: "before",
+      alt: "She stands at the side of a road in green and yellow ankara, buildings behind her.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/12-maroon-lace.jpg",
+      w: 926, h: 1300, chapter: "before",
+      alt: "She stands outdoors in a deep red lace dress and white head tie, holding a white handbag.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/13-pink-suit.jpg",
+      w: 1050, h: 1300, chapter: "before",
+      alt: "She stands between parked cars in a pale pink skirt suit.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/14-green-and-beads.jpg",
+      w: 1007, h: 1300, chapter: "before",
+      alt: "She stands outdoors in a green patterned dress, a large patterned gele and dark beads.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/15-purple-gele-market.jpg",
+      w: 846, h: 1300, chapter: "before",
+      alt: "She stands at a busy outdoor event in a white embroidered top, purple gele and coral beads.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/16-the-big-arch.jpg",
+      w: 927, h: 1300, chapter: "before",
+      alt: "She stands in front of a tall inflatable arch at an outdoor event.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/17-two-of-them.jpg",
+      w: 913, h: 1300, chapter: "before",
+      alt: "A studio portrait of her with another young woman, one seated in cream, one standing in black.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/18-with-an-elder.jpg",
+      w: 894, h: 1300, chapter: "before",
+      alt: "She sits beside an older woman in white lace and a pink gele, an arm around her shoulders.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/19-matching-stripes.jpg",
+      w: 922, h: 1300, chapter: "before",
+      alt: "She stands outdoors with another woman, both in matching black and white traditional dress and gele.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/20-white-lace-four.jpg",
+      w: 868, h: 1300, chapter: "before",
+      alt: "Four women in matching white lace stand together outdoors at a celebration.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/21-matching-ankara.jpg",
+      w: 1300, h: 945, chapter: "chose",
+      alt: "A close portrait of the two of them in matching yellow and orange patterned ankara.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/22-arms-around-her.jpg",
+      w: 1008, h: 1300, chapter: "chose",
+      alt: "She sits smiling in a blue shirt while he leans in behind her with his arms around her.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/23-white-tops-on-grass.jpg",
+      w: 978, h: 1300, chapter: "chose",
+      alt: "The two of them stand on grass in matching white tops and dark trousers.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/24-leaning-in.jpg",
+      w: 887, h: 1300, chapter: "chose",
+      alt: "She stands behind him with her arms folded over his shoulders, both looking at the camera.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/25-young-love-outdoors.jpg",
+      w: 1300, h: 899, chapter: "chose",
+      alt: "The two of them outside a house with palm trees behind, she in a patterned wrapper and white hat.",
       caption: "Long before the four of us."
     },
     {
-      src: "assets/photos/02-young-love-traditional.jpg",
-      w: 1800, h: 1226, chapter: "before",
-      alt: "Nwando laughing with her head tilted toward Chike as they sit together on a dark couch, both in traditional dress.",
+      src: "assets/photos/26-young-love-traditional.jpg",
+      w: 1300, h: 886, chapter: "chose",
+      alt: "She laughs with her head tilted toward him as they sit together on a dark couch in traditional dress.",
       caption: "Thirty-two years of friendship started somewhere around here."
     },
     {
-      src: "assets/photos/03-building-a-life.jpg",
-      w: 1800, h: 988, chapter: "building",
-      alt: "Nwando standing among stacked goods, coolers, basins and chairs at her trading stall.",
+      src: "assets/photos/27-blue-lace-couple.jpg",
+      w: 1077, h: 1300, chapter: "chose",
+      alt: "The two of them seated outdoors in matching pale blue lace and caps.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/28-the-ceremony.jpg",
+      w: 1300, h: 1008, chapter: "chose",
+      alt: "At a traditional ceremony, a seated couple as a drink is offered between them.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/29-the-veil.jpg",
+      w: 848, h: 1300, chapter: "chose",
+      alt: "A bride in a veil and beaded tiara, wearing pearls.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/30-the-bouquet.jpg",
+      w: 932, h: 1300, chapter: "chose",
+      alt: "She stands in a white lace dress and pearls holding a small bouquet, greenery behind her.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/31-purple-aso-ebi.jpg",
+      w: 1300, h: 946, chapter: "chose",
+      alt: "A room full of women in matching purple lace and gele, posed together.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/32-studio-together.jpg",
+      w: 1300, h: 922, chapter: "chose",
+      alt: "A studio portrait of the two of them, she leaning against his shoulder.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/33-building-a-life.jpg",
+      w: 1300, h: 714, chapter: "building",
+      alt: "She stands among stacked goods, coolers, basins and chairs at her trading stall.",
       caption: "Surrounded by the work of her own hands."
     },
     {
-      src: "assets/photos/04-family-with-baby.jpg",
-      w: 1800, h: 1335, chapter: "building",
-      alt: "Nwando in a pink top holding a baby boy, with Chike beside her, all three smiling.",
+      src: "assets/photos/34-expecting.jpg",
+      w: 902, h: 1300, chapter: "building",
+      alt: "A studio portrait of her expecting, in a brown and black patterned dress against a painted backdrop.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/35-family-with-baby.jpg",
+      w: 1300, h: 964, chapter: "building",
+      alt: "She holds a baby boy in a pink top with him beside her, all three smiling.",
       caption: "The firstborn."
     },
     {
-      src: "assets/photos/05-mother-and-daughter.jpg",
-      w: 1800, h: 1295, chapter: "building",
-      alt: "Nwando holding a small girl with beaded braids close to her cheek.",
+      src: "assets/photos/36-mother-and-daughter.jpg",
+      w: 1300, h: 935, chapter: "building",
+      alt: "She holds a small girl with beaded braids close to her cheek.",
       caption: "And then there were more of us."
     },
     {
-      src: "assets/photos/06-early-portrait.jpg",
-      w: 498, h: 1080, chapter: "between",
-      alt: "Nwando smiling gently in a teal patterned shirt, hair cut short.",
+      src: "assets/photos/37-the-new-baby.jpg",
+      w: 1300, h: 934, chapter: "building",
+      alt: "Women gathered indoors around an older woman holding a newborn.",
       caption: ""
     },
     {
-      src: "assets/photos/07-green-celebration.jpg",
-      w: 810, h: 1080, chapter: "between",
-      alt: "Nwando in a green gele and bright green, red and yellow ankara, taking a photo outdoors.",
-      caption: "Owambe weather."
-    },
-    {
-      src: "assets/photos/08-blue-celebration.jpg",
-      w: 607, h: 1080, chapter: "between",
-      alt: "Nwando in a blue beaded blouse, blue gele and white lace wrapper standing outside a church.",
+      src: "assets/photos/38-at-the-church.jpg",
+      w: 1300, h: 990, chapter: "building",
+      alt: "A family group standing with a priest in purple vestments.",
       caption: ""
     },
     {
-      src: "assets/photos/09-braided-portrait.jpg",
-      w: 810, h: 1080, chapter: "between",
-      alt: "Nwando in long braids and a sheer black top, photographed at home.",
+      src: "assets/photos/39-small-boy-green.jpg",
+      w: 907, h: 1300, chapter: "building",
+      alt: "She crouches beside a small boy in sunglasses, wearing a green patterned dress and gold head tie.",
       caption: ""
     },
     {
-      src: "assets/photos/10-with-her-daughter.jpg",
+      src: "assets/photos/40-three-in-matching.jpg",
+      w: 870, h: 1300, chapter: "people",
+      alt: "She stands outdoors with three girls in matching green and white dresses.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/41-by-the-water.jpg",
+      w: 1300, h: 905, chapter: "people",
+      alt: "The family sitting against a car by the water, hills across the far bank.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/42-under-the-trees.jpg",
+      w: 1300, h: 953, chapter: "people",
+      alt: "She stands in blue under tall trees while children sit at a table behind her.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/43-everybody.jpg",
+      w: 1300, h: 924, chapter: "people",
+      alt: "A large family group standing together outdoors under trees, children in front.",
+      caption: "Everybody."
+    },
+    {
+      src: "assets/photos/44-poolside.jpg",
+      w: 1300, h: 875, chapter: "people",
+      alt: "A group of family and friends with small children, gathered by a pool.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/45-prize-day.jpg",
+      w: 1300, h: 931, chapter: "people",
+      alt: "The family at an outdoor prize day, a cake and trophies on the table in front of them.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/46-school-run-crew.jpg",
       w: 810, h: 1080, chapter: "people",
-      alt: "Nwando in a white top leaning in cheek to cheek with one of her daughters.",
-      caption: ""
-    },
-    {
-      src: "assets/photos/11-school-run-crew.jpg",
-      w: 810, h: 1080, chapter: "people",
-      alt: "Nwando in ankara outdoors at school with three of the children, two in navy cadet uniforms, one pulling a face.",
+      alt: "She stands outdoors at school in ankara with three of the children, two in navy cadet uniforms, one pulling a face.",
       caption: "Nobody poses properly in this family."
     },
     {
-      src: "assets/photos/12-school-day-selfie.jpg",
+      src: "assets/photos/47-school-day-selfie.jpg",
       w: 810, h: 1080, chapter: "people",
-      alt: "Nwando taking a selfie with two of the girls in school uniform, all three smiling.",
+      alt: "She takes a photograph with two of the girls in school uniform, all three smiling.",
       caption: ""
     },
     {
-      src: "assets/photos/13-alumni-day.jpg",
+      src: "assets/photos/48-with-her-daughter.jpg",
       w: 810, h: 1080, chapter: "people",
-      alt: "Nwando cheek to cheek with a daughter wearing a green alumni sash.",
+      alt: "She leans in cheek to cheek with one of her daughters, both in white.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/49-alumni-day.jpg",
+      w: 810, h: 1080, chapter: "people",
+      alt: "She is cheek to cheek with a daughter wearing a green alumni sash.",
       caption: "Another one finished."
     },
     {
-      src: "assets/photos/14-red-portrait.jpg",
+      src: "assets/photos/50-graduation-green.jpg",
+      w: 1300, h: 957, chapter: "people",
+      alt: "Three of them outdoors at a graduation, one wearing a green sash over white.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/51-carrying-the-dishes.jpg",
+      w: 1300, h: 967, chapter: "between",
+      alt: "Three women in deep red traditional dress and coral beads carry covered dishes at a ceremony.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/52-coral-and-blue.jpg",
+      w: 1300, h: 929, chapter: "between",
+      alt: "Four women in coral and blue traditional dress with beads and gele, together at a celebration.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/53-black-and-gold.jpg",
+      w: 810, h: 1080, chapter: "between",
+      alt: "She stands in a car park in a black and gold patterned dress with a gold head tie.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/54-early-portrait.jpg",
+      w: 498, h: 1080, chapter: "between",
+      alt: "She smiles gently in a teal patterned shirt, hair cut short.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/55-green-celebration.jpg",
+      w: 810, h: 1080, chapter: "between",
+      alt: "She wears a green gele and bright green, red and yellow ankara, photographed outdoors.",
+      caption: "Owambe weather."
+    },
+    {
+      src: "assets/photos/56-blue-celebration.jpg",
+      w: 607, h: 1080, chapter: "between",
+      alt: "She stands outside a church in a blue beaded blouse, blue gele and white lace wrapper.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/57-braided-portrait.jpg",
+      w: 810, h: 1080, chapter: "between",
+      alt: "She wears long braids and a sheer black top, photographed at home.",
+      caption: ""
+    },
+    {
+      src: "assets/photos/58-red-portrait.jpg",
       w: 810, h: 1080, chapter: "now",
-      alt: "Nwando in a red jacket, photographed beside a window.",
+      alt: "She wears a red jacket, photographed beside a window.",
       caption: ""
     },
     {
-      src: "assets/photos/15-red-celebration.jpg",
+      src: "assets/photos/59-red-celebration.jpg",
       w: 750, h: 1050, chapter: "now",
-      alt: "Nwando in a red jacket and wide black trousers standing on a field at an outdoor ceremony.",
+      alt: "She stands on a field at an outdoor ceremony in a red jacket and wide black trousers.",
       caption: ""
     },
     {
-      src: "assets/photos/16-golden-portrait.jpg",
+      src: "assets/photos/60-golden-portrait.jpg",
       w: 792, h: 1080, chapter: "now",
-      alt: "Nwando in gold lace, a gold gele and coral beads, looking straight at the camera.",
+      alt: "She looks straight at the camera in gold lace, a gold gele and coral beads.",
       caption: "Fifty looks like this.",
       hero: true
     },
     {
-      src: "assets/photos/17-today-close.jpg",
+      src: "assets/photos/61-today-close.jpg",
       w: 810, h: 1080, chapter: "now",
-      alt: "Nwando close to the camera in white lace and a champagne gele, greenery behind her.",
+      alt: "She is close to the camera in white lace and a champagne gele, greenery behind her.",
       caption: ""
     },
     {
-      src: "assets/photos/18-today-in-white.jpg",
+      src: "assets/photos/62-today-in-white.jpg",
       w: 810, h: 1080, chapter: "now",
-      alt: "Nwando standing on the grass under a tree in full white lace and a champagne gele.",
+      alt: "She stands on the grass under a tree in full white lace and a champagne gele.",
       caption: ""
     }
   ],
